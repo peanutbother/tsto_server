@@ -1,0 +1,25 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+.input {
+  position: inherit;
+}
+
+@utility body-container-h {
+  /* @apply grid; */
+  @apply gap-6;
+  @apply h-3/4;
+  @apply rounded-xl;
+  @apply shadow-lg;
+  @apply border-2;
+  @apply bg-yellow-500;
+  @apply dark:bg-blue-800;
+  @apply border-yellow-400;
+  @apply dark:border-blue-400;
+  @apply dark:text-white;
+}
+
+@utility body-container {
+  @apply body-container-h;
+  @apply w-3/4;
+}

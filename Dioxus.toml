@@ -1,0 +1,25 @@
+[application]
+name = "TSTO Server"
+default_platform = "fullstack"
+out_dir = "dist"
+
+[bundle]
+identifier = "de.peanutbother"
+category = "Utility"
+description = "A server for the simpsons tapped out"
+long_description = "This application acts as a server for patched apps to enable users to play the game again."
+
+[web.app]
+title = "TSTO Server"
+
+[web.watcher]
+reload_html = true
+watch_path = ["src", "assets"]
+
+[web.resource]
+style = []
+script = []
+
+[web.resource.dev]
+style = []
+script = []

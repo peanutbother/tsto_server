@@ -1,0 +1,594 @@
+{
+  "items": [
+    {
+      "clientConfigId": 0,
+      "name": "AppUrl.ios.na",
+      "value": "https://apps.apple.com/app/id497595276?ls=1&mt=8"
+    },
+    {
+      "clientConfigId": 1,
+      "name": "GameClient.MaxBundleSize",
+      "value": "50"
+    },
+    {
+      "clientConfigId": 2,
+      "name": "MinimumVersion.ios",
+      "value": "4.69.0"
+    },
+    {
+      "clientConfigId": 3,
+      "name": "CurrentVersion.ios",
+      "value": "4.69.0"
+    },
+    {
+      "clientConfigId": 5,
+      "name": "LocalSaveInterval",
+      "value": "10"
+    },
+    {
+      "clientConfigId": 6,
+      "name": "ServerSaveInterval",
+      "value": "100"
+    },
+    {
+      "clientConfigId": 7,
+      "name": "AppUrl.ios.row",
+      "value": "https://apps.apple.com/app/id498375892?ls=1&mt=8"
+    },
+    {
+      "clientConfigId": 8,
+      "name": "RateUrl.ios.na",
+      "value": "https://apps.apple.com/app/id497595276?ls=1&mt=8"
+    },
+    {
+      "clientConfigId": 9,
+      "name": "RateUrl.ios.row",
+      "value": "https://apps.apple.com/app/id498375892?ls=1&mt=8"
+    },
+    {
+      "clientConfigId": 10,
+      "name": "CheckDLCInterval",
+      "value": "3600"
+    },
+    {
+      "clientConfigId": 13,
+      "name": "AppUrl.android.na",
+      "value": "https://play.google.com/store/apps/details?id=com.ea.game.simpsons4_na"
+    },
+    {
+      "clientConfigId": 14,
+      "name": "AppUrl.android.row",
+      "value": "https://play.google.com/store/apps/details?id=com.ea.game.simpsons4_row"
+    },
+    {
+      "clientConfigId": 15,
+      "name": "RateUrl.android.na",
+      "value": "https://play.google.com/store/apps/details?id=com.ea.game.simpsons4_na"
+    },
+    {
+      "clientConfigId": 16,
+      "name": "RateUrl.android.row",
+      "value": "https://play.google.com/store/apps/details?id=com.ea.game.simpsons4_row"
+    },
+    {
+      "clientConfigId": 20,
+      "name": "MinimumVersion.android",
+      "value": "4.69.0"
+    },
+    {
+      "clientConfigId": 21,
+      "name": "CurrentVersion.android",
+      "value": "4.69.0"
+    },
+    {
+      "clientConfigId": 22,
+      "name": "AppUrl.android.amazon.azn",
+      "value": "amzn://apps/android?p=com.ea.game.simpsonsto_azn"
+    },
+    {
+      "clientConfigId": 23,
+      "name": "AppUrl.android.amazon.azn_row",
+      "value": "amzn://apps/android?p=com.ea.game.simpsons4_azn_row"
+    },
+    {
+      "clientConfigId": 24,
+      "name": "RateUrl.android.amazon.azn",
+      "value": "amzn://apps/android?p=com.ea.game.simpsonsto_azn"
+    },
+    {
+      "clientConfigId": 25,
+      "name": "RateUrl.android.amazon.azn_row",
+      "value": "amzn://apps/android?p=com.ea.game.simpsons4_azn_row"
+    },
+    {
+      "clientConfigId": 26,
+      "name": "CoppaEnabledNa",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 27,
+      "name": "CoppaEnabledRow",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 28,
+      "name": "MaxBuildingSoftCapEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 29,
+      "name": "MaxBuildingSoftCapLimit",
+      "value": "19500"
+    },
+    {
+      "clientConfigId": 30,
+      "name": "MaxBuildingSoftCapRepeatAmount",
+      "value": "500"
+    },
+    {
+      "clientConfigId": 31,
+      "name": "MaxBuildingHardCapEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 32,
+      "name": "MaxBuildingHardCapLimit",
+      "value": "24000"
+    },
+    {
+      "clientConfigId": 41,
+      "name": "ClientConfigInterval",
+      "value": "300"
+    },
+    {
+      "clientConfigId": 43,
+      "name": "TelemetryEnabled.android",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 44,
+      "name": "TelemetryEnabled.ios",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 45,
+      "name": "TelemetryEnabled.android.amazon",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 47,
+      "name": "MinimumVersion.android.amazon",
+      "value": "4.69.0"
+    },
+    {
+      "clientConfigId": 48,
+      "name": "CurrentVersion.android.amazon",
+      "value": "4.69.0"
+    },
+    {
+      "clientConfigId": 52,
+      "name": "OriginAvatarsUrl",
+      "value": "https://m.avatar.dm.origin.com"
+    },
+    {
+      "clientConfigId": 54,
+      "name": "TutorialDLCEnabled.ios",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 55,
+      "name": "TutorialDLCEnabled.android",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 56,
+      "name": "TutorialDLCEnabled.android.amazon",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 57,
+      "name": "AppUrl.android.nokia.row",
+      "value": "market://details?id=com.ea.game.simpsons4_nokia_row"
+    },
+    {
+      "clientConfigId": 58,
+      "name": "RateUrl.android.nokia.row",
+      "value": "market://details?id=com.ea.game.simpsons4_nokia_row"
+    },
+    {
+      "clientConfigId": 59,
+      "name": "ParamUrl.android.nokia.row",
+      "value": "market://details?id=com.ea.game.simpsons4_nokia_row"
+    },
+    {
+      "clientConfigId": 60,
+      "name": "TutorialDLCEnabled.android.nokia",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 67,
+      "name": "EnableVBOCache",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 68,
+      "name": "CoppaEnabledRow.ios.row.4.10.2",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 69,
+      "name": "CoppaEnabledRow.android.row.4.10.2",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 70,
+      "name": "CoppaEnabledRow.android.amazon.azn_row.4.10.2",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 71,
+      "name": "CoppaEnabledRow.ios.row.4.10.3",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 72,
+      "name": "CoppaEnabledRow.android.row.4.10.3",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 73,
+      "name": "CoppaEnabledRow.android.amazon.azn_row.4.10.3",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 74,
+      "name": "ExpiredTokenForcedLogoutEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 75,
+      "name": "SortEnableDAGAndTopo",
+      "value": "2"
+    },
+    {
+      "clientConfigId": 76,
+      "name": "CustomFontEnabled.4.21.1",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 77,
+      "name": "CustomFontEnabled.4.21.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 82,
+      "name": "EnableOptAppSwitch.ios",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 83,
+      "name": "FullAppSwitchInterval",
+      "value": "86400"
+    },
+    {
+      "clientConfigId": 84,
+      "name": "AkamaiClientEnabled.ios",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 85,
+      "name": "AkamaiClientEnabled.android",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 86,
+      "name": "CustomFontEnabled.ios.row.4.13.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 87,
+      "name": "CustomFontEnabled.ios.na.4.13.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 88,
+      "name": "CustomFontEnabled.android.row.4.13.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 89,
+      "name": "CustomFontEnabled.android.na.4.13.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 90,
+      "name": "CustomFontEnabled.android.amazon.azn.4.13.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 91,
+      "name": "CustomFontEnabled.android.amazon.azn_row.4.13.2",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 92,
+      "name": "EnableOptAppSwitch.android",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 93,
+      "name": "EnableOptAppSwitch.android.amazon",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 101,
+      "name": "TopUpGrindEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 102,
+      "name": "SynergySendAdditionalPurchaseFields.ios",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 103,
+      "name": "SynergySendAdditionalPurchaseFields.android",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 104,
+      "name": "SynergySendAdditionalPurchaseFields.android.amazon",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 105,
+      "name": "EnableRoadCacheOptimization",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 106,
+      "name": "FixNegativeObjectiveCount",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 107,
+      "name": "LandDataVersionUpgraderEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 108,
+      "name": "ConfigVersion",
+      "value": "131"
+    },
+    {
+      "clientConfigId": 109,
+      "name": "Game:Enable:JobManagerEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 114,
+      "name": "MinimumOSVersion.ios",
+      "value": "7.0.0"
+    },
+    {
+      "clientConfigId": 115,
+      "name": "MinimumOSVersion.android",
+      "value": "3.0.0"
+    },
+    {
+      "clientConfigId": 116,
+      "name": "MinimumOSVersion.android.amazon",
+      "value": "3.0.0"
+    },
+    {
+      "clientConfigId": 117,
+      "name": "XZeroSortFix",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 118,
+      "name": "DefaultJobCensus",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 119,
+      "name": "TntForgotPassURL",
+      "value": "https://signin.ea.com/p/originX/resetPassword"
+    },
+    {
+      "clientConfigId": 120,
+      "name": "Game:Enable:ShowRestorePurchases.ios",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 121,
+      "name": "CountriesWhereUpdatesUnavailable",
+      "value": "CN"
+    },
+    {
+      "clientConfigId": 122,
+      "name": "Game:Enable:ShowRestorePurchases.ios.4.26.0",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 123,
+      "name": "FastQuestReload",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 124,
+      "name": "FastQuestReload.4.26.5",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 125,
+      "name": "DisableQuestAutostartBackups",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 126,
+      "name": "EnableCheckIndex",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 127,
+      "name": "CrashReportingIOSOn",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 128,
+      "name": "CrashReportingKindleOn",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 129,
+      "name": "CrashReportingAndroidOn",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 130,
+      "name": "CrashReportingNokiaOn",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 131,
+      "name": "LogOalErrors",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 132,
+      "name": "UseNumPadCodeLogin",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 133,
+      "name": "DeleteUserEnabled",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 134,
+      "name": "EnableBGDownloadIos",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 135,
+      "name": "EnableBGDownloadAndroid",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 136,
+      "name": "EnableBGDownloadAmazon",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 137,
+      "name": "MaxSimultaneousBGDownloadsIos",
+      "value": "5"
+    },
+    {
+      "clientConfigId": 138,
+      "name": "MaxSimultaneousBGDownloadsAndroid",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 139,
+      "name": "MaxSimultaneousBGDownloadsAmazon",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 140,
+      "name": "BGDownloadQuickCheckEnabled",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 1010,
+      "name": "MHVersion",
+      "value": "1"
+    },
+    {
+      "clientConfigId": 1011,
+      "name": "RequestsPerSecond",
+      "value": "44"
+    },
+    {
+      "clientConfigId": 996,
+      "name": "GeolocationCountryCode",
+      "value": "NO"
+    },
+    {
+      "clientConfigId": 997,
+      "name": "GeolocationCountryName",
+      "value": "Norway"
+    },
+    {
+      "clientConfigId": 950,
+      "name": "TntAuthUrl",
+      "value": "https://auth.tnt-ea.com"
+    },
+    {
+      "clientConfigId": 951,
+      "name": "TntWalletUrl",
+      "value": "https://wallet.tnt-ea.com"
+    },
+    {
+      "clientConfigId": 952,
+      "name": "TntNucleusUrl",
+      "value": "https://nucleus.tnt-ea.com"
+    },
+    {
+      "clientConfigId": 953,
+      "name": "OriginFriendUrl",
+      "value": "https://m.friends.dm.origin.com"
+    },
+    {
+      "clientConfigId": 954,
+      "name": "SynergyUrl",
+      "value": "https://synergy.eamobile.com:443"
+    },
+    {
+      "clientConfigId": 1015,
+      "name": "FriendsProxyUrl",
+      "value": "https://friends.simpsons-ea.com"
+    },
+    {
+      "clientConfigId": 949,
+      "name": "SynergyFormatUrl",
+      "value": "https://%s.sn.eamobile.com"
+    },
+    {
+      "clientConfigId": 995,
+      "name": "KillswitchAllowFriends",
+      "value": "0"
+    },
+    {
+      "clientConfigId": 994,
+      "name": "ServerVersion",
+      "value": "local"
+    },
+    {
+      "clientConfigId": 1000,
+      "name": "Origin.AppId",
+      "value": "ecad9d7fce76be3a"
+    },
+    {
+      "clientConfigId": 1001,
+      "name": "ParamUrl.ea.na",
+      "value": "https://kaleidoscope.ea.com?tag=98529d4875ad67f9"
+    },
+    {
+      "clientConfigId": 1002,
+      "name": "ParamUrl.ea.row",
+      "value": "https://kaleidoscope.ea.com?tag=3f9dafa0d4e38867"
+    },
+    {
+      "clientConfigId": 1003,
+      "name": "TntUrl",
+      "value": "https://tnt-auth.ea.com?trackingKey=b2b32cdf829a1c27"
+    },
+    {
+      "clientConfigId": 1011,
+      "name": "MH_Version",
+      "value": "1"
+    }
+  ]
+}

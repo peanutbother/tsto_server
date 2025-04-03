@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "DioxusLabs.dioxus",
+    "Gruntfuggly.todo-tree",
+    "rust-lang.rust-analyzer"
+  ]
+}

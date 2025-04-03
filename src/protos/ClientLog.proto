@@ -1,0 +1,25 @@
+package com.ea.simpsons.client.log;
+message ClientLogMessage {
+	enum Severity {
+		WARN = 0;
+		SEVERE = 1;
+	}
+	enum ConnectionType {
+		WIFI = 0;
+		MOBILE = 1;
+		UNKNOWN = 2;
+	}
+	message ServerProvidedLogFields {
+		optional int64 server_received_timestamp = 1;
+		optional string server_received_datestamp = 2;
+		optional string server_received_country_code = 3;
+		optional string server_received_clientSessionGUID = 4;
+	}
+	required int64 time_stamp = 1;
+	required .com.ea.simpsons.client.log.ClientLogMessage.Severity severity = 2;
+	required string source = 3;
+	required string text = 4;
+	optional string userId = 5;
+	optional .com.ea.simpsons.client.log.ClientLogMessage.ConnectionType connectionType = 6;
+	optional .com.ea.simpsons.client.log.ClientLogMessage.ServerProvidedLogFields serverLogFields = 7;
+}

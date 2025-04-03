@@ -1,0 +1,100 @@
+name: Build and Release Server
+
+on:
+  push:
+    tags:
+      - "v*.*.*" # Runs when a version tag (e.g., v1.0.0) is pushed
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        target:
+          - name: aarch64-apple-darwin
+          - name: x86_64-apple-darwin
+          - name: aarch64-unknown-linux-musl
+          - name: x86_64-unknown-linux-musl
+          - name: x86_64-pc-windows-gnu
+            is_windows: true
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown,${{matrix.target.name}}
+
+      - name: Set up cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: "npm"
+
+      - name: Set up Node.js dependencies
+        run: npm ci
+
+      - name: Install wasm-bindgen-cli
+        run: cargo binstall wasm-bindgen-cli
+
+      - name: Install Dioxus
+        run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last
+
+      - name: Build Server
+        env:
+          DIOXUS_LOG: trace
+        run: dx bundle --fullstack --release --out-dir dist --target ${{matrix.target.name}} --trace -- -vv
+
+      - name: Create Archives
+        run: |
+          mkdir -p artifacts
+          if ${{matrix.target.is_windows != true}}; then
+            tar -czvf artifacts/tsto_server-${{matrix.target.name}}.tar.gz -C dist .
+          else
+            zip -r artifacts/tsto_server-${{matrix.target.name}}.zip dist/*
+          fi
+
+      - name: Upload *nix Archives
+        if: ${{matrix.target.is_windows != true}}
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsto_server-${{matrix.target.name}}
+          path: artifacts/tsto_server-${{matrix.target.name}}.tar.gz
+
+      - name: Upload Windows Archives
+        if: runner.target.is_windows
+        uses: actions/upload-artifact@v4
+        with:
+          name: tsto_server-${{matrix.target.name}}
+          path: artifacts/tsto_server-${{matrix.target.name}}.zip
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: artifacts/**/*
+          token: ${{ secrets.GITHUB_TOKEN }}
+          tag_name: ${{ github.ref_name }}
+          name: "Release ${{ github.ref_name }}"
+          draft: false
+          prerelease: false

@@ -1,0 +1,740 @@
+{
+  "item": [
+    {
+      "name": "MysteryBoxUpgrade_GameConfig:Enable:GambleCall",
+      "value": "0"
+    },
+    {
+      "name": "System:Disable:DynamicSteamer",
+      "value": "1"
+    },
+    {
+      "name": "TouchPriority_GameConfig:Enable:TouchPriority",
+      "value": "true"
+    },
+    {
+      "name": "Casino_GameConfig:Gamblers:LocalTapped_CurrencyAmount",
+      "value": "20"
+    },
+    {
+      "name": "Casino_GameConfig:Gamblers:LocalTapped_TokenChance",
+      "value": "0.15"
+    },
+    {
+      "name": "Validator_GameConfig:VariablesValidator:Validator",
+      "value": "1"
+    },
+    {
+      "name": "Validator_GameConfig:VariablesValidator:ScriptedRequirements",
+      "value": "1"
+    },
+    {
+      "name": "Validator_GameConfig:VariablesValidator:ScriptedRequirements_Variables",
+      "value": "1"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:Wildwest_Start",
+      "value": "2016-04-19 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:Wildwest_ActOne",
+      "value": "2016-04-19 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:Wildwest_ActTwo",
+      "value": "2016-05-03 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:Wildwest_ActThree",
+      "value": "2016-05-17 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:Wildwest_End",
+      "value": "2016-05-30 23:59"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:Wildwest_LastChance",
+      "value": "2016-05-24 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_GeneralStoreStartTime",
+      "value": "2016-04-19 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_GeneralStorePrizeTrackOneEndTime",
+      "value": "2016-05-03 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_GeneralStorePrizeTrackTwoEndTime",
+      "value": "2016-05-17 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_GeneralStorePrizeTrackThreeEndTime",
+      "value": "2016-05-30 23:59"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_ReturningContentWave1",
+      "value": "2016-04-26 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_ReturningContentWave2",
+      "value": "2016-05-10 8:00"
+    },
+    {
+      "name": "WildWest_GameConfig:Dates:WildWest_ReturningContentWave3",
+      "value": "2016-05-24 8:00"
+    },
+    {
+      "name": "WildWestPromo_GameConfig:Dates:WildWestPromo_End",
+      "value": "2016-05-04 08:00"
+    },
+    {
+      "name": "DSH_GameConfig:Dates:DSH_End",
+      "value": "2016-02-04 7:00:00"
+    },
+    {
+      "name": "DSH_GameConfig:Dates:DSH_OutroEnd",
+      "value": "2016-03-04 7:00:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:Casino_StartDate",
+      "value": "2016-02-23 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:Casino_ActTwo",
+      "value": "2016-03-07 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:Casino_ActThree",
+      "value": "2016-03-17 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:Casino_EndDate",
+      "value": "2016-03-29 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:Casino_ActTwo_Quests",
+      "value": "2016-03-03 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:Casino_ActThree_Quests",
+      "value": "2016-03-13 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:PlatScratcher_WindowOne_Start",
+      "value": "2016-03-01 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:PlatScratcher_WindowOne_End",
+      "value": "2016-03-04 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:PlatScratcher_WindowTwo_Start",
+      "value": "2016-03-24 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:PlatScratcher_WindowTwo_End",
+      "value": "2016-03-27 8:00"
+    },
+    {
+      "name": "Casino_GameConfig:Dates:ReferAFriendEnd",
+      "value": "2016-03-23 8:00"
+    },
+    {
+      "name": "Margeian_GameConfig:Dates:Margeian_Start",
+      "value": "2016-02-04 7:00:00"
+    },
+    {
+      "name": "Margeian_GameConfig:Dates:Margeian_End",
+      "value": "2016-03-16 8:00:00"
+    },
+    {
+      "name": "Margeian_GameConfig:Dates:Margeian_Kill",
+      "value": "2016-04-16 8:00:00"
+    },
+    {
+      "name": "Tailgate_GameConfig:Dates:Tailgate_Start",
+      "value": "2016-01-01 08:00"
+    },
+    {
+      "name": "Tailgate_GameConfig:Dates:Tailgate_End",
+      "value": "2016-02-09 08:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:BeachHouseStartDate",
+      "value": "2015-03-29 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:BeachHouseEndDate",
+      "value": "2015-04-07 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:MilhouseStartDate",
+      "value": "2015-03-24 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:MilhouseEndDate",
+      "value": "2015-03-31 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:RadStationStartDate",
+      "value": "2015-03-29 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:RadStationEndDate",
+      "value": "2015-04-07 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:BartCaveStartDate",
+      "value": "2015-03-29 8:00"
+    },
+    {
+      "name": "Superheroes_GameConfig:Dates:BartCaveEndDate",
+      "value": "2015-04-07 8:00"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_ActOne_Start",
+      "value": "2014-01-01 8:00"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_ActTwo_Start",
+      "value": "2014-04-28 8:00"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_ActThree_Start",
+      "value": "2014-05-12 8:00"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_End",
+      "value": "2014-05-26 8:00"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_KillDate",
+      "value": "2014-06-04 8:00"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_5MinBeforeActTwo",
+      "value": "2014-04-28 7:55"
+    },
+    {
+      "name": "Terwilligers_GameConfig:Dates:Terwilligers_5MinBeforeActThree",
+      "value": "2014-05-12 7:55"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:June2015_StartDate",
+      "value": "2015-05-23 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:HomerballActOne",
+      "value": "2015-05-23 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:HomerballActTwo",
+      "value": "2015-05-03 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:HomerballActThree",
+      "value": "2015-05-13 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:HomerballEnd",
+      "value": "2015-05-23 16:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:HomerballActOneCrossover",
+      "value": "2015-05-01 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:HomerballActTwoCrossover",
+      "value": "2015-05-11 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:JuneStorePhaseTwoStart",
+      "value": "2015-05-03 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:JuneStorePhaseThreeStart",
+      "value": "2015-05-13 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:RevertToThreePanel",
+      "value": "2015-06-07 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:SoccerCupStart",
+      "value": "2015-05-25 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:SoccerCupEnd",
+      "value": "2015-05-30 8:00"
+    },
+    {
+      "name": "June2015_GameConfig:Dates:JuneTakedownEnd",
+      "value": "2015-07-28 8:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:StEaster_PromoEnd",
+      "value": "2016-03-20 8:00:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:StEaster_End",
+      "value": "2016-03-30 8:00:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:StEaster_Switch",
+      "value": "2016-03-23 8:00:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:StEaster_Kill",
+      "value": "2016-04-29 8:00:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:CruddySunday",
+      "value": "2016-03-27 8:00:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:CruddySunday_End",
+      "value": "2016-03-29 8:00:00"
+    },
+    {
+      "name": "StEaster_GameConfig:Dates:StPatsDay",
+      "value": "2016-03-17 8:00:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015ActOne",
+      "value": "2015-10-06 8:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015ActTwo",
+      "value": "2015-10-20 8:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015ActThree",
+      "value": "2015-11-04 8:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015ActEnd",
+      "value": "2015-11-17 8:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015ActKill",
+      "value": "2015-11-27 8:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015EventEndReminder",
+      "value": "2015-11-14 8:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015EventEndReminderEnd",
+      "value": "2015-11-14 23:59"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015LastDayReminder",
+      "value": "2015-11-17 1:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015TakedownActive",
+      "value": "2015-11-18 1:00"
+    },
+    {
+      "name": "THOH2015_GameConfig:Dates:THOH2015PrizeTrackActOneEnd",
+      "value": "2015-10-20 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_StartDate",
+      "value": "2014-12-08 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_ActOne",
+      "value": "2014-12-08 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_ActTwo",
+      "value": "2014-12-19 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_EndDate",
+      "value": "2015-01-02 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:Maggie_Early_StartDate",
+      "value": "2014-12-23 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:Maggie_StartDate",
+      "value": "2015-01-02 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:Maggie_EndDate",
+      "value": "2015-01-19 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_NewYearsDay",
+      "value": "2015-01-01 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_NewYearsStart",
+      "value": "2014-12-29 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_NewYearsFinale",
+      "value": "2014-12-31 8:00"
+    },
+    {
+      "name": "XMAS2015_GameConfig:Dates:XMASFifteen_NewYearsEnd",
+      "value": "2015-01-02 8:00"
+    },
+    {
+      "name": "OldJewishMan_GameConfig:Dates:RoshHashanah_StartDate",
+      "value": "2015-09-13 8:00"
+    },
+    {
+      "name": "OldJewishMan_GameConfig:Dates:EarlyAccess_OldJewishMan",
+      "value": "2015-09-17 8:00"
+    },
+    {
+      "name": "OldJewishMan_GameConfig:Dates:RoshHashanah_EndDate",
+      "value": "2015-09-16 8:00"
+    },
+    {
+      "name": "MathletesFeat_GameConfig:Dates:MathletesFeat_Air",
+      "value": "2015-05-18 0:00"
+    },
+    {
+      "name": "MathletesFeat_GameConfig:Dates:MathletesFeat_End",
+      "value": "2015-05-19 8:00"
+    },
+    {
+      "name": "MathletesFeat_GameConfig:Dates:MathletesFeat_Kill",
+      "value": "2015-06-19 8:00"
+    },
+    {
+      "name": "THOH2015_TieIn_GameConfig:Dates:THOH2015_TieIn_StartDate",
+      "value": "2015-10-21 8:00"
+    },
+    {
+      "name": "THOH2015_TieIn_GameConfig:Dates:THOH2015_TieIn_AirshipStartDate",
+      "value": "2015-10-23 8:00"
+    },
+    {
+      "name": "THOH2015_TieIn_GameConfig:Dates:THOH2015_TieIn_AirDate",
+      "value": "2015-10-25 8:00"
+    },
+    {
+      "name": "THOH2015_TieIn_GameConfig:Dates:THOH2015_TieIn_EndDate",
+      "value": "2015-10-26 8:00"
+    },
+    {
+      "name": "THOH2015_TieIn_GameConfig:Dates:THOH2015_TieIn_KillDate",
+      "value": "2015-11-26 8:00"
+    },
+    {
+      "name": "Valentines2016_GameConfig:Dates:Valentines2016_End",
+      "value": "2015-02-17 8:00:00"
+    },
+    {
+      "name": "Valentines2016_GameConfig:Dates:Valentines2016_Day",
+      "value": "2015-02-14 8:00:00"
+    },
+    {
+      "name": "Valentines2016_GameConfig:Dates:Valentines2016_Air",
+      "value": "2015-02-15 3:00:00"
+    },
+    {
+      "name": "Valentines2016_GameConfig:Dates:Valentines2016_DayEnd",
+      "value": "2015-02-15 8:00:00"
+    },
+    {
+      "name": "Valentines2016_GameConfig:Dates:Valentines2016_MaudeAvailability",
+      "value": "2015-02-24 8:00:00"
+    },
+    {
+      "name": "HalloweenOfHorror_GameConfig:Dates:THOH2015TieInStart",
+      "value": "2015-10-14 8:00"
+    },
+    {
+      "name": "HalloweenOfHorror_GameConfig:Dates:THOH2015TieInEnd",
+      "value": "2015-10-19 8:00"
+    },
+    {
+      "name": "HalloweenOfHorror_GameConfig:Dates:THOH2015TieInKill",
+      "value": "2014-11-19 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:SpringfieldHeightsWeekOne",
+      "value": "2015-07-21 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:SpringfieldHeightsWeekTwo",
+      "value": "2015-07-28 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:SpringfieldHeightsWeekThree",
+      "value": "2015-08-04 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:SpringfieldHeightsWeekFour",
+      "value": "2015-08-11 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:SpringfieldHeightsWeekNine",
+      "value": "2015-09-15 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:SpringfieldHeightsWeekTen",
+      "value": "2015-09-22 8:00"
+    },
+    {
+      "name": "SpringfieldHeights_GameConfig:Dates:WealthyWednesday_EndTime",
+      "value": "2014-12-04 8:00"
+    },
+    {
+      "name": "WhackingDayPromo_GameConfig:Dates:WhackingDayPromo_Start",
+      "value": "2016-05-09 7:00"
+    },
+    {
+      "name": "WhackingDayPromo_GameConfig:Dates:WhackingDayPromo_End",
+      "value": "2016-05-12 7:00"
+    },
+    {
+      "name": "WhackingDayPromo_GameConfig:Dates:WhackingDayPromo_Kill",
+      "value": "2016-06-11 7:00"
+    },
+    {
+      "name": "WhackingDayPromo_GameConfig:Dates:HomerLivePromo_Start",
+      "value": "2016-05-09 7:00"
+    },
+    {
+      "name": "WhackingDayPromo_GameConfig:Dates:HomerLivePromo_End",
+      "value": "2016-05-15 7:00"
+    },
+    {
+      "name": "Superheroes2_GameConfig:Dates:SuperheroesTwo_QuickBattle",
+      "value": "2016-06-28 7:00"
+    },
+    {
+      "name": "SpringfieldGames_GameConfig:FirmwareMessage:Enabled",
+      "value": "1"
+    },
+    {
+      "name": "SciFi_GameConfig:Campaign:Reward1",
+      "value": "60"
+    },
+    {
+      "name": "SciFi_GameConfig:Campaign:Reward2",
+      "value": "15"
+    },
+    {
+      "name": "SciFi_GameConfig:Enable:Interactions",
+      "value": "1"
+    },
+    {
+      "name": "SciFi_SciFighterConfig:SciFighterPayouts:BaseReward_Event",
+      "value": "100"
+    },
+    {
+      "name": "SciFi_SciFighterConfig:SciFighterPayouts:CompletionReward_Event",
+      "value": "45"
+    },
+    {
+      "name": "SciFi_SciFighterConfig:SciFighterPayouts:PerSecondReward_Event",
+      "value": "5"
+    },
+    {
+      "name": "SeasonPremiere2016_GameConfig:Dates:SeasonPremiere2016_4X_End",
+      "value": "2016-10-04 17:00:00"
+    },
+    {
+      "name": "SeasonPremiere2016_GameConfig:Dates:SeasonPremiere2016_End",
+      "value": "2016-10-04 17:00:00"
+    },
+    {
+      "name": "NewUserBalancingConfig:XPTarget:Lvl60_TargetToNext",
+      "value": "500000"
+    },
+    {
+      "name": "NewUserBalancingConfig:XPTarget:PrestigeIncreaseBonusExp",
+      "value": "1000000"
+    },
+    {
+      "name": "FirstTimeMTX_GameConfig:FirstTimePacks:Enabled",
+      "value": "true"
+    },
+    {
+      "name": "AroundTheWorld_BalancingConfig:AirportJobs:TicketSpawnTimer",
+      "value": "20m"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerCount_Layer1_Base",
+      "value": "1"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerCount_Layer1_Range",
+      "value": "3"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerValue_Layer1_Base",
+      "value": "61"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerValue_Layer1_Range",
+      "value": "33"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerCount_Layer1_Base",
+      "value": "1"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerCount_Layer1_Range",
+      "value": "4"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerValue_Layer1_Base",
+      "value": "14"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerValue_Layer1_Range",
+      "value": "11"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerCount_Layer2_Base",
+      "value": "8"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerCount_Layer2_Range",
+      "value": "8"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerValue_Layer2_Base",
+      "value": "163"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:SpecimenLayerValue_Layer2_Range",
+      "value": "88"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerCount_Layer2_Base",
+      "value": "7"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerCount_Layer",
+      "value": "7"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerValue_Layer2_Base",
+      "value": "56"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:TachyonLayerValue_Layer2_Range",
+      "value": "44"
+    },
+    {
+      "name": "TimeTravellingToaster_BalancingConfig:ExcavationSiteRewards:PrizeTrackPerShovelValue",
+      "value": "31"
+    },
+    {
+      "name": "Music_Spreadsheet_Config:PrizeTrack3:Prize1",
+      "value": "14600"
+    },
+    {
+      "name": "Music_Spreadsheet_Config:PrizeTrack3:Prize2",
+      "value": "33600"
+    },
+    {
+      "name": "Music_Spreadsheet_Config:PrizeTrack3:Prize3",
+      "value": "56900"
+    },
+    {
+      "name": "Music_Spreadsheet_Config:PrizeTrack3:Prize4",
+      "value": "83200"
+    },
+    {
+      "name": "Music_Spreadsheet_Config:PrizeTrack3:Prize5",
+      "value": "109500"
+    },
+    {
+      "name": "Music_Spreadsheet_Config:PrizeTrack3:Prize6",
+      "value": "146000"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize1",
+      "value": "900"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize2",
+      "value": "2800"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize3",
+      "value": "5600"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize4",
+      "value": "9400"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize5",
+      "value": "13200"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize6",
+      "value": "17000"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack2:Prize7",
+      "value": "22700"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize1",
+      "value": "1300"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize2",
+      "value": "3900"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize3",
+      "value": "7800"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize4",
+      "value": "13000"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize5",
+      "value": "18200"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize6",
+      "value": "23400"
+    },
+    {
+      "name": "THOH2017_Config:PrizeTrack3:Prize7",
+      "value": "31200"
+    },
+    {
+      "name": "BFCM2017_GameConfig:Dates:BlackFriday2017_End",
+      "value": "2017-11-28 8:00"
+    },
+    {
+      "name": "BFCM2017_GameConfig:Dates:CyberMonday2017_End",
+      "value": "2017-11-28 8:00"
+    },
+    {
+      "name": "THOH2018_GameConfig:PremiumCosts:Hellscape",
+      "value": "199"
+    },
+    {
+      "name": "THOHXXX_GameConfig:EnableMTX:THOHXXX_iOSMTXOffersEnabled",
+      "value": "true"
+    },
+    {
+      "name": "THOHXXX_GameConfig:EnableMTX:THOHXXX_AndroidMTXOffersEnabled",
+      "value": "true"
+    },
+    {
+      "name": "THOHXXX_GameConfig:Dates:THOHXXX_MERCH_TenCommandments_End",
+      "value": "2019-11-20 14:00"
+    }
+  ]
+}

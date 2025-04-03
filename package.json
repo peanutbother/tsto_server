@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "npx @tailwindcss/cli -i src/assets/tailwind.css -o assets/tailwind.css --minify"
+  },
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.1",
+    "daisyui": "^5.0.12",
+    "tailwindcss": "^4.1.1"
+  }
+}

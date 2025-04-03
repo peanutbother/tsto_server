@@ -1,0 +1,163 @@
+{
+  "DMGId": 0,
+  "appUpgrade": 0,
+  "clientId": "simpsons4-platform-client",
+  "clientSecret": "",
+  "disabledFeatures": [],
+  "facebookAPIKey": "43b9130333cc984c79d06aa0cad3a0c8",
+  "facebookAppId": "185424538221919",
+  "hwId": 2363,
+  "mayhemGameCode": "",
+  "mdmAppKey": "simpsons-4-platform",
+  "packageId": "com.ea.game.simpsons4_row",
+  "pollIntervals": [
+    {
+      "key": "badgePollInterval",
+      "value": "300"
+    }
+  ],
+  "productId": 48302,
+  "resultCode": 0,
+  "sellId": 857120,
+  "serverApiVersion": "",
+  "serverData": [
+    {
+      "key": "nexus.portal",
+      "value": ""
+    },
+    {
+      "key": "nexus.connect",
+      "value": ""
+    },
+    {
+      "key": "nexus.proxy",
+      "value": ""
+    },
+    {
+      "key": "synergy.tracking",
+      "value": ""
+    },
+    {
+      "key": "synergy.m2u",
+      "value": ""
+    },
+    {
+      "key": "synergy.pns",
+      "value": ""
+    },
+    {
+      "key": "synergy.s2s",
+      "value": ""
+    },
+    {
+      "key": "synergy.product",
+      "value": ""
+    },
+    {
+      "key": "synergy.drm",
+      "value": ""
+    },
+    {
+      "key": "synergy.user",
+      "value": ""
+    },
+    {
+      "key": "synergy.cipgl",
+      "value": ""
+    },
+    {
+      "key": "synergy.director",
+      "value": ""
+    },
+    {
+      "key": "antelope.groups.url",
+      "value": "https://groups.gameservices.ea.com"
+    },
+    {
+      "key": "service.discovery.url",
+      "value": "https://service-discovery.tnt-ea.com"
+    },
+    {
+      "key": "antelope.rtm.host",
+      "value": "rtm.tnt-ea.com:9000"
+    },
+    {
+      "key": "antelope.friends.url",
+      "value": "https://friends.gs.ea.com:443"
+    },
+    {
+      "key": "dmg.url",
+      "value": "http://gamecloud.j2play.net"
+    },
+    {
+      "key": "avatars.url",
+      "value": "https://m.avatar.dm.origin.com"
+    },
+    {
+      "key": "akamai.url",
+      "value": "http://cdn.skum.eamobile.com/skumasset/gameasset/"
+    },
+    {
+      "key": "mayhem.url",
+      "value": "https://ipsp.sn.eamobile.com"
+    },
+    {
+      "key": "group.recommendations.url",
+      "value": "https://recommendations.tnt-ea.com"
+    },
+    {
+      "key": "friend.recommendations.url",
+      "value": "https://recommendations.tnt-ea.com"
+    },
+    {
+      "key": "geoip.url",
+      "value": "https://geoip.tnt-ea.com"
+    },
+    {
+      "key": "river.pin",
+      "value": "https://pin-river.data.ea.com"
+    },
+    {
+      "key": "origincasualserver.url",
+      "value": "https://oms.origin.com/api/"
+    },
+    {
+      "key": "ens.url",
+      "value": "https://pn.tnt-ea.com/rest/v1"
+    },
+    {
+      "key": "eadp.friends.host",
+      "value": "https://friends.gs.ea.com"
+    },
+    {
+      "key": "antelope.inbox.url",
+      "value": "https://inbox.tnt-ea.com"
+    },
+    {
+      "key": "antelope.rtm.url",
+      "value": "https://rtm.tnt-ea.com"
+    },
+    {
+      "key": "applecert.url",
+      "value": "https://www.apple.com/appleca/AppleIncRootCertificate.cer"
+    },
+    {
+      "key": "friends.url",
+      "value": "https://m.friends.dm.origin.com"
+    },
+    {
+      "key": "aruba.url",
+      "value": "https://emapi.prm.data.ea.com"
+    },
+    {
+      "key": "pin.aruba.url",
+      "value": "https://pin-em.data.ea.com"
+    },
+
+    {
+      "key": "origincasualapp.url",
+      "value": "https://oms.origin.com/loader/mobile/android/"
+    }
+  ],
+  "telemetryFreq": 99999
+}

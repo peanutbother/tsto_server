@@ -1,0 +1,10 @@
+package com.ea.simpsons.client.metrics;
+message ClientMetricsMessage {
+	enum Type {
+		COUNTER = 0;
+		HISTOGRAM = 1;
+	}
+	required .com.ea.simpsons.client.metrics.ClientMetricsMessage.Type type = 1;
+	required string name = 2;
+	required int64 value = 3;
+}
