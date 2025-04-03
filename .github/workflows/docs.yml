@@ -1,0 +1,43 @@
+name: Build and Publish Documentation
+
+on:
+  push:
+    branches:
+      - "main"
+  workflow_dispatch: # Allows manual trigger from GitHub UI
+
+defaults:
+  run:
+    shell: bash
+
+jobs:
+  build:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Set up Rust
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: wasm32-unknown-unknown,x86_64-pc-windows-gnu
+
+      - name: Build Documentationrun
+        run: |
+          mkdir -p _site
+          cargo doc \
+            --no-deps \
+            -- features server,web
+          echo '<meta http-equiv="refresh" content="0;url=/tsto_server/tsto_server">' > target/doc/index.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: "target/doc"
+
+      - name: Deploy to GitHub Pages
+        uses: actions/deploy-pages@v4
