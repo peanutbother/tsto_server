@@ -28,10 +28,9 @@ jobs:
 
       - name: Build Documentationrun
         run: |
-          mkdir -p _site
           cargo doc \
             --no-deps \
-            -- features server,web
+            --features server,web
           echo '<meta http-equiv="refresh" content="0;url=/tsto_server/tsto_server">' > target/doc/index.html
 
       - name: Upload artifact
