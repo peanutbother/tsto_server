@@ -28,6 +28,7 @@ jobs:
 
       - name: Build Documentationrun
         run: |
+          touch assets/tailwind.css # stub generated asset
           cargo doc \
             --no-deps \
             --features server,web
