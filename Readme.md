@@ -1,8 +1,8 @@
 # TSTO Server
 
-[![Latest stable build](https://github.com/peanutbother/tsto_server/actions/workflows/release.yml/badge.svg?branch=main&event=workflow_run)](https://github.com/peanutbother/tsto_server/releases/latest)
+[![Build Status](https://github.com/peanutbother/tsto_server/actions/workflows/release.yml/badge.svg?branch=main)](https://github.com/peanutbother/tsto_server/releases/latest) ![GitHub Downloads (all assets, latest release)](https://img.shields.io/github/downloads/peanutbother/tst_server/latest/total?label=Downloads)
 
-A fullstack Dioxus application built with Rust and Nix, supporting macOS, Linux, and Windows.
+A fullstack Dioxus application built with Rust and Nix, supporting macOS, Linux and Windows.
 
 ## 🚀 Features
 
