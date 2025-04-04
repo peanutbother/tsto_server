@@ -19,6 +19,7 @@ jobs:
           - aarch64-apple-darwin
           - x86_64-apple-darwin
           - aarch64-unknown-linux-gnu
+          - x86_64-unknown-linux-gnu
           - x86_64-pc-windows-gnu
 
     steps:
@@ -46,6 +47,12 @@ jobs:
       - name: Set up MinGW for Windows target
         if: ${{contains(matrix.target, 'windows')}}
         run: brew install mingw-w64
+
+      - name: Set up MinGW for Windows target
+        if: ${{contains(matrix.target, 'linux')}}
+        run: |
+          brew tap messense/macos-cross-toolchains
+          brew install ${{matrix.target}}
 
       - name: Set up cargo-binstall
         uses: cargo-bins/cargo-binstall@main
@@ -76,7 +83,7 @@ jobs:
           if ${{!contains(matrix.target, 'windows')}}; then
             tar -czvf artifacts/tsto_server-${{matrix.target}}.tar.gz -C dist .
           else
-            zip -r artifacts/tsto_server-${{matrix.target.name}}.zip dist/*
+            zip -r artifacts/tsto_server-${{matrix.target}}.zip dist/*
           fi
 
       - name: Upload *nix Archives
