@@ -49,9 +49,9 @@ jobs:
         if: ${{contains(matrix.target.name, 'windows')}}
         run: brew install mingw-w64
 
-      - name: Setup Linux Build Dependencies
+      - name: Setup MUSL Build Dependencies
         if: ${{contains(matrix.target.name, '-musl')}}
-        run: sudo apt-get update && sudo apt-get install -y pkg-config libssl-dev
+        run: sudo apt-get update && sudo apt-get install -y pkg-config libssl-dev musl-dev musl-tools musl
 
       - name: Install cross-compilation tools for Linux
         if: ${{contains(matrix.target.name, '-musl')}}
