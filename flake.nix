@@ -63,6 +63,7 @@
           buildPhase = ''
             export RUSTUP_HOME=$(pwd)/.rustup
             export CARGO_HOME=$(pwd)/.rustup
+            npm install
             dx bundle --fullstack --release --out-dir dist
           '';
           installPhase = ''
