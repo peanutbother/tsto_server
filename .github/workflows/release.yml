@@ -26,7 +26,6 @@ jobs:
             os: ubuntu-latest
           - name: x86_64-pc-windows-gnu
             os: macos-latest
-            is_windows: true
 
     steps:
       - name: Checkout repository
@@ -37,9 +36,13 @@ jobs:
         with:
           targets: wasm32-unknown-unknown,${{matrix.target.name}}
 
-      - name: Setup MinGW for windows targets
-        if: matrix.target.is_windows
+      - name: Setup MinGW for Windows target
+        if: ${{contains(matrix.target.name, 'windows')}}
         run: brew install mingw-w64
+
+      - name: Setup Musl-Gcc
+        if: ${{contains(matrix.target.name, '-musl')}}
+        run: sudo apt-get install musl-tools
 
       - name: Set up cargo-binstall
         uses: cargo-bins/cargo-binstall@main
@@ -67,21 +70,21 @@ jobs:
       - name: Create Archives
         run: |
           mkdir -p artifacts
-          if ${{matrix.target.is_windows != true}}; then
+          if ${{!contains(matrix.target.name, 'windows')}}; then
             tar -czvf artifacts/tsto_server-${{matrix.target.name}}.tar.gz -C dist .
           else
             zip -r artifacts/tsto_server-${{matrix.target.name}}.zip dist/*
           fi
 
       - name: Upload *nix Archives
-        if: ${{matrix.target.is_windows != true}}
+        if: ${{!contains(matrix.target.name, 'windows')}}
         uses: actions/upload-artifact@v4
         with:
           name: tsto_server-${{matrix.target.name}}
           path: artifacts/tsto_server-${{matrix.target.name}}.tar.gz
 
       - name: Upload Windows Archives
-        if: matrix.target.is_windows
+        if: ${{contains(matrix.target.name, 'windows')}}
         uses: actions/upload-artifact@v4
         with:
           name: tsto_server-${{matrix.target.name}}
