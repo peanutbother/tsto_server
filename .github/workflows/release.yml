@@ -53,7 +53,7 @@ jobs:
       - name: Build Server
         env:
           DIOXUS_LOG: trace
-        run: dx bundle --fullstack --release --out-dir dist --target ${{matrix.target.name}} --trace -- -vv
+        run: dx bundle --fullstack --release --out-dir dist --server-target ${{matrix.target.name}} --trace -- -vv
 
       - name: Create Archives
         run: |
