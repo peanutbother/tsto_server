@@ -31,13 +31,15 @@ jobs:
         continue-on-error: false
         with:
           path: |
+            ~/.cargo/crates.toml
+            ~/.cargo/crates2.json
             ~/.cargo/bin/
             ~/.cargo/registry/index/
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ matrix.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: ${{ matrix.target }}-cargo-
+          key: cargo-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: cargo-${{ matrix.target }}-
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
