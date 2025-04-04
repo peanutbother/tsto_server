@@ -59,9 +59,8 @@ jobs:
         with:
           target: ${{ matrix.target.name }}
 
-      - name: Unset CARGO_BUILD_TARGET on Linux
-        if: ${{contains(matrix.target.name, '-musl')}}
-        run: unset CARGO_BUILD_TARGET
+      - name: Unset TARGET
+        run: unset TARGET
 
       - name: Set up cargo-binstall
         uses: cargo-bins/cargo-binstall@main
