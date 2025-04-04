@@ -21,6 +21,7 @@ jobs:
           - aarch64-unknown-linux-gnu
           - x86_64-unknown-linux-gnu
           - x86_64-pc-windows-gnu
+          - aarch64-pc-windows-gnu
     env:
       CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER: aarch64-linux-gnu-gcc
       CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER: x86_64-linux-gnu-gcc
@@ -88,6 +89,7 @@ jobs:
           if ${{!contains(matrix.target, 'windows')}}; then
             tar -czvf artifacts/tsto_server-${{matrix.target}}.tar.gz -C dist .
           else
+            mv dist/server dist/server.exe
             zip -r artifacts/tsto_server-${{matrix.target}}.zip dist/*
           fi
 
