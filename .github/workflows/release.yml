@@ -31,6 +31,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - uses: actions/cache@v4
+        with:
+          path: |
+            ~/.cargo/bin/
+            ~/.cargo/registry/index/
+            ~/.cargo/registry/cache/
+            ~/.cargo/git/db/
+          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
         with:
@@ -40,9 +49,15 @@ jobs:
         if: ${{contains(matrix.target.name, 'windows')}}
         run: brew install mingw-w64
 
-      - name: Setup Musl-Gcc
+      - name: Install cross-compilation tools for Linux
         if: ${{contains(matrix.target.name, '-musl')}}
-        run: sudo apt-get update && sudo apt-get install -y pkg-config libssl-dev musl-dev musl-tools musl gcc-aarch64-linux-gnu
+        uses: taiki-e/setup-cross-toolchain-action@v1
+        with:
+          target: ${{ matrix.target.name }}
+
+      - name: Unset CARGO_BUILD_TARGET on Linux
+        if: ${{contains(matrix.target.name, '-musl')}}
+        run: unset CARGO_BUILD_TARGET
 
       - name: Set up cargo-binstall
         uses: cargo-bins/cargo-binstall@main
@@ -60,7 +75,11 @@ jobs:
         run: cargo binstall wasm-bindgen-cli
 
       - name: Install Dioxus
-        run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last
+        uses: taiki-e/cache-cargo-install-action@v2
+        with:
+          tool: dioxus-cli
+          git: https://github.com/DioxusLabs/dioxus
+          tag: v0.6-last
 
       - name: Build Server
         env:
