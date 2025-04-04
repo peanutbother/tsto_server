@@ -30,6 +30,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Set up cargo cache
+        id: cache-cargo
         uses: actions/cache@v3
         continue-on-error: false
         with:
@@ -60,6 +61,7 @@ jobs:
           brew install ${{matrix.target}}
 
       - name: Set up cargo-binstall
+        if: steps.cache-cargo.outputs.cache-hit != 'true'
         uses: cargo-bins/cargo-binstall@main
 
       - name: Set up Node.js
@@ -72,9 +74,11 @@ jobs:
         run: npm ci
 
       - name: Install wasm-bindgen-cli
+        if: steps.cache-cargo.outputs.cache-hit != 'true'
         run: cargo binstall wasm-bindgen-cli
 
       - name: Install Dioxus
+        if: steps.cache-cargo.outputs.cache-hit != 'true'
         run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last
 
       - name: Build Server
