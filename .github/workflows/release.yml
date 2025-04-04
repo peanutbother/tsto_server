@@ -12,15 +12,20 @@ defaults:
 
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ${{matrix.target.os}}
     strategy:
       matrix:
         target:
           - name: aarch64-apple-darwin
+            os: macos-latest
           - name: x86_64-apple-darwin
+            os: macos-latest
           - name: aarch64-unknown-linux-musl
+            os: ubuntu-latest
           - name: x86_64-unknown-linux-musl
+            os: ubuntu-latest
           - name: x86_64-pc-windows-gnu
+            os: macos-latest
             is_windows: true
 
     steps:
@@ -31,6 +36,10 @@ jobs:
         uses: dtolnay/rust-toolchain@stable
         with:
           targets: wasm32-unknown-unknown,${{matrix.target.name}}
+
+      - name: Setup MinGW for windows targets
+        if: matrix.target.is_windows
+        run: brew install mingw-w64
 
       - name: Set up cargo-binstall
         uses: cargo-bins/cargo-binstall@main
