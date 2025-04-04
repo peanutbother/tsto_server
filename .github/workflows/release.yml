@@ -12,20 +12,14 @@ defaults:
 
 jobs:
   build:
-    runs-on: ${{matrix.target.os}}
+    runs-on: macos-latest
     strategy:
       matrix:
         target:
-          - name: aarch64-apple-darwin
-            os: macos-latest
-          - name: x86_64-apple-darwin
-            os: macos-latest
-          - name: aarch64-unknown-linux-musl
-            os: ubuntu-latest
-          - name: x86_64-unknown-linux-musl
-            os: ubuntu-latest
-          - name: x86_64-pc-windows-gnu
-            os: macos-latest
+          - aarch64-apple-darwin
+          - x86_64-apple-darwin
+          - aarch64-unknown-linux-gnu
+          - x86_64-pc-windows-gnu
 
     steps:
       - name: Checkout repository
@@ -41,27 +35,17 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: ${{ runner.os }}-cargo-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: ${{ runner.os }}-cargo-
+          key: ${{ matrix.target }}-cargo-${{ hashFiles('**/Cargo.lock') }}
+          restore-keys: ${{ matrix.target }}-cargo-
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
         with:
-          targets: wasm32-unknown-unknown,${{matrix.target.name}}
+          targets: wasm32-unknown-unknown,${{matrix.target}}
 
       - name: Set up MinGW for Windows target
-        if: ${{contains(matrix.target.name, 'windows')}}
+        if: ${{contains(matrix.target, 'windows')}}
         run: brew install mingw-w64
-
-      - name: Set up MUSL Build Dependencies
-        if: ${{contains(matrix.target.name, '-musl')}}
-        run: sudo apt-get update && sudo apt-get install -y pkg-config libssl-dev musl-dev musl-tools musl
-
-      - name: Set up cross-compilation tools for Linux
-        if: ${{contains(matrix.target.name, '-musl')}}
-        uses: taiki-e/setup-cross-toolchain-action@v1
-        with:
-          target: ${{ matrix.target.name }}
 
       - name: Set up cargo-binstall
         uses: cargo-bins/cargo-binstall@main
@@ -84,30 +68,30 @@ jobs:
       - name: Build Server
         env:
           DIOXUS_LOG: trace
-        run: dx bundle --fullstack --release --out-dir dist --server-target ${{matrix.target.name}} --trace -- -vv
+        run: dx bundle --fullstack --release --out-dir dist --server-target ${{matrix.target}} --trace -- -vv
 
       - name: Create Archives
         run: |
           mkdir -p artifacts
-          if ${{!contains(matrix.target.name, 'windows')}}; then
-            tar -czvf artifacts/tsto_server-${{matrix.target.name}}.tar.gz -C dist .
+          if ${{!contains(matrix.target, 'windows')}}; then
+            tar -czvf artifacts/tsto_server-${{matrix.target}}.tar.gz -C dist .
           else
             zip -r artifacts/tsto_server-${{matrix.target.name}}.zip dist/*
           fi
 
       - name: Upload *nix Archives
-        if: ${{!contains(matrix.target.name, 'windows')}}
+        if: ${{!contains(matrix.target, 'windows')}}
         uses: actions/upload-artifact@v4
         with:
-          name: tsto_server-${{matrix.target.name}}
-          path: artifacts/tsto_server-${{matrix.target.name}}.tar.gz
+          name: tsto_server-${{matrix.target}}
+          path: artifacts/tsto_server-${{matrix.target}}.tar.gz
 
-      - name: Upload Windows Archives
-        if: ${{contains(matrix.target.name, 'windows')}}
+      - name: Upload Windows Archive
+        if: ${{contains(matrix.target, 'windows')}}
         uses: actions/upload-artifact@v4
         with:
-          name: tsto_server-${{matrix.target.name}}
-          path: artifacts/tsto_server-${{matrix.target.name}}.zip
+          name: tsto_server-${{matrix.target}}
+          path: artifacts/tsto_server-${{matrix.target}}.zip
 
   release:
     needs: build
