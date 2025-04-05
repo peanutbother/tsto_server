@@ -1,9 +1,12 @@
-use crate::util::DIRECTORIES;
+use super::env::EnvOptions;
+use super::{args::Args, OPTIONS};
+use crate::util::{relative_path, DIRECTORIES};
+use clap::Parser;
 use std::{
     fs::create_dir_all,
     path::{Path, PathBuf},
 };
-use tracing::debug;
+use tracing::{debug, info};
 
 #[derive(Debug, Clone, serde::Deserialize, serde::Serialize)]
 pub struct ServerOptions {
@@ -16,15 +19,31 @@ pub struct ServerOptions {
     pub database: String,
     pub server_address: String,
     pub log_assets: bool,
+    #[serde(skip)]
+    pub portable: bool,
 }
 
 impl ServerOptions {
     pub fn new() -> Self {
-        read_toml().expect("reading/writing config succeeds")
+        let env = EnvOptions::parse().expect("valid arguments given");
+        let args = Args::parse();
+        let options = Self::read(&args).expect("reading/writing config succeeds");
+
+        if args.portable {
+            info!(
+                "portable mode activated. configuration and data will be saved relative to program"
+            )
+        }
+
+        env.merge(options, args)
     }
 
     pub fn dlc_folder(&self) -> PathBuf {
-        let mut path = DIRECTORIES.data_dir().to_path_buf();
+        let mut path = if OPTIONS.take().portable {
+            relative_path().expect("curent relative path retrieves successfully")
+        } else {
+            DIRECTORIES.data_local_dir().to_path_buf()
+        };
         path.push(self.dlc_folder.clone());
 
         path
@@ -40,30 +59,39 @@ impl ServerOptions {
 
         Ok(std::fs::write(path, toml::to_string_pretty(self)?)?)
     }
-}
 
-fn read_toml() -> anyhow::Result<ServerOptions> {
-    let mut path = DIRECTORIES.config_dir().to_path_buf();
-    path.push("server.toml");
+    /// reads the server config from either relative (if portable mode) or config path and parses it.
+    fn read(args: &Args) -> anyhow::Result<ServerOptions> {
+        let mut path = if args.portable {
+            relative_path()?
+        } else {
+            DIRECTORIES.config_local_dir().to_path_buf()
+        };
+        path.push("server.toml");
 
-    if let Ok(content) = std::fs::read_to_string(&path) {
-        debug!("local config exists");
-        Ok(toml::from_str::<ServerOptions>(&content).map(|mut opts| {
-            if opts.server_address.ends_with("/") {
-                // strip trailing slash
-                opts.server_address =
-                    opts.server_address[..opts.server_address.len() - 1].to_owned()
-            }
+        if let Ok(content) = std::fs::read_to_string(&path) {
+            debug!("local config exists");
+            Ok(toml::from_str::<ServerOptions>(&content).map(|mut opts| {
+                if let Some(address) = opts.server_address.strip_suffix("/") {
+                    // strip trailing slash
+                    opts.server_address = address.to_owned();
+                }
 
-            opts
-        })?)
-    } else {
-        debug!("local config does not exist. default creating config");
-        let server_options = ServerOptions::default();
+                opts.portable = args.portable;
 
-        server_options.save(&path)?;
+                opts
+            })?)
+        } else {
+            debug!("local config does not exist. default creating config");
+            let server_options = ServerOptions {
+                portable: args.portable,
+                ..Default::default()
+            };
 
-        Ok(server_options)
+            server_options.save(&path)?;
+
+            Ok(server_options)
+        }
     }
 }
 
@@ -79,6 +107,7 @@ impl Default for ServerOptions {
             database: "server.db".to_owned(),
             server_address: "http://127.0.0.1".to_owned(),
             log_assets: cfg!(debug_assertions),
+            portable: false,
         }
     }
 }

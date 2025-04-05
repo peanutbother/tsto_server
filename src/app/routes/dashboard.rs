@@ -1,4 +1,7 @@
-use crate::util::DIRECTORIES;
+use crate::{
+    config::OPTIONS,
+    util::{relative_path, DIRECTORIES},
+};
 use axum::{
     extract::ws::{WebSocket, WebSocketUpgrade},
     response::Response,
@@ -48,7 +51,11 @@ async fn handle_socket(mut socket: WebSocket) {
 }
 
 fn get_logs_stream() -> Result<impl Stream<Item = String>, std::io::Error> {
-    let mut log_file = DIRECTORIES.data_dir().to_path_buf();
+    let mut log_file = if OPTIONS.take().portable {
+        relative_path()?
+    } else {
+        DIRECTORIES.data_local_dir().to_path_buf()
+    };
     log_file.push("server_log.jsonl");
 
     let logs = std::fs::OpenOptions::new().read(true).open(log_file)?;

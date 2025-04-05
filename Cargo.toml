@@ -16,6 +16,7 @@ axum-response-cache = { version = "0.2.0", optional = true, default-features = f
 base64 = "0.22.1"
 bytes = "1.10.1"
 chrono = "0.4.40"
+clap = { version = "4.5.35", features = ["derive"], optional = true }
 dioxus = { version = "0.6.3", features = ["fullstack", "router"] }
 dioxus-i18n = "0.4.3"
 dioxus-sdk = { version = "0.6.0", features = ["storage"] }
@@ -78,6 +79,7 @@ server = [
     "dep:axum-core",
     "dep:axum-response-cache",
     "dep:axum",
+    "dep:clap",
     "dep:directories",
     "dep:hmac",
     "dep:jwt",

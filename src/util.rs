@@ -18,7 +18,7 @@ mod r#mod {
     pub use super::xml::Xml;
     use directories::ProjectDirs;
     use lazy_static::lazy_static;
-    use std::time::SystemTime;
+    use std::{path::PathBuf, time::SystemTime};
 
     lazy_static! {
         pub static ref UPTIME: SystemTime = SystemTime::now();
@@ -36,5 +36,13 @@ mod r#mod {
         use std::time::{SystemTime, UNIX_EPOCH};
 
         Ok(SystemTime::now().duration_since(UNIX_EPOCH)?.as_millis())
+    }
+
+    /// returns the relative path to the executable
+    pub fn relative_path() -> std::io::Result<PathBuf> {
+        Ok(std::env::current_exe()?
+            .parent()
+            .expect("parent dir is valid UTF-8")
+            .to_path_buf())
     }
 }

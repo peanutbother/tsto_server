@@ -11,7 +11,7 @@ use crate::{
         events::TSTO_EVENTS,
     },
     config::OPTIONS,
-    util::{DIRECTORIES, UPTIME},
+    util::{relative_path, DIRECTORIES, UPTIME},
 };
 use tracing::instrument;
 
@@ -97,7 +97,11 @@ impl DashboardController {
 
     #[instrument]
     pub fn set_dlc_path(dlc_path: String) -> Result<(), DashboardControllerError> {
-        let mut path = DIRECTORIES.config_dir().to_path_buf();
+        let mut path = if OPTIONS.take().portable {
+            relative_path().map_err(anyhow::Error::from)?
+        } else {
+            DIRECTORIES.config_local_dir().to_path_buf()
+        };
         path.push("server.toml");
 
         let mut server_options = OPTIONS.take();
@@ -109,7 +113,11 @@ impl DashboardController {
 
     #[instrument]
     pub fn set_default_donuts(donuts: u32) -> Result<(), DashboardControllerError> {
-        let mut path = DIRECTORIES.config_dir().to_path_buf();
+        let mut path = if OPTIONS.take().portable {
+            relative_path().map_err(anyhow::Error::from)?
+        } else {
+            DIRECTORIES.config_local_dir().to_path_buf()
+        };
         path.push("server.toml");
 
         let mut server_options = OPTIONS.take();
@@ -121,7 +129,11 @@ impl DashboardController {
 
     #[instrument]
     pub fn set_port(port: u16) -> Result<(), DashboardControllerError> {
-        let mut path = DIRECTORIES.config_dir().to_path_buf();
+        let mut path = if OPTIONS.take().portable {
+            relative_path().map_err(anyhow::Error::from)?
+        } else {
+            DIRECTORIES.config_local_dir().to_path_buf()
+        };
         path.push("server.toml");
 
         let mut server_options = OPTIONS.take();
@@ -133,7 +145,11 @@ impl DashboardController {
 
     #[instrument]
     pub fn set_address(address: String) -> Result<(), DashboardControllerError> {
-        let mut path = DIRECTORIES.config_dir().to_path_buf();
+        let mut path = if OPTIONS.take().portable {
+            relative_path().map_err(anyhow::Error::from)?
+        } else {
+            DIRECTORIES.config_local_dir().to_path_buf()
+        };
         path.push("server.toml");
 
         let mut server_options = OPTIONS.take();
