@@ -1,6 +1,6 @@
 use crate::protos::MessageFromPath;
 use crate::protos::{CurrencyError, LandError};
-use crate::util::Xml;
+use crate::util::{relative_path, Xml};
 use crate::{
     config::OPTIONS,
     database::Database,
@@ -311,7 +311,11 @@ impl MayhemController {
                     return Err(MayhemControllerError::InvalidWholeLandToken);
                 }
 
-                let mut path = DIRECTORIES.config_dir().to_path_buf();
+                let mut path = if OPTIONS.take().portable {
+                    relative_path().map_err(anyhow::Error::from)?
+                } else {
+                    DIRECTORIES.data_local_dir().to_path_buf()
+                };
                 path.push(format!("{mayhem_id}/land.pb"));
 
                 if !path.exists() {
@@ -387,7 +391,11 @@ impl MayhemController {
                     return Err(MayhemControllerError::InvalidWholeLandToken);
                 }
 
-                let mut path = DIRECTORIES.config_dir().to_path_buf();
+                let mut path = if OPTIONS.take().portable {
+                    relative_path().map_err(anyhow::Error::from)?
+                } else {
+                    DIRECTORIES.data_local_dir().to_path_buf()
+                };
                 path.push(format!("{mayhem_id}/land.pb"));
 
                 if !path.exists() {
@@ -443,7 +451,11 @@ impl MayhemController {
                     return Err(MayhemControllerError::InvalidAccessToken);
                 }
 
-                let mut path = DIRECTORIES.config_dir().to_path_buf();
+                let mut path = if OPTIONS.take().portable {
+                    relative_path().map_err(anyhow::Error::from)?
+                } else {
+                    DIRECTORIES.data_local_dir().to_path_buf()
+                };
                 path.push(format!("{mayhem_id}/currency.pb"));
 
                 let currency = if !path.exists() {
@@ -527,7 +539,11 @@ impl MayhemController {
                     return Err(MayhemControllerError::InvalidWholeLandToken);
                 }
 
-                let mut path = DIRECTORIES.config_dir().to_path_buf();
+                let mut path = if OPTIONS.take().portable {
+                    relative_path().map_err(anyhow::Error::from)?
+                } else {
+                    DIRECTORIES.data_local_dir().to_path_buf()
+                };
                 path.push(format!("{mayhem_id}/currency.pb"));
 
                 let currency = if !path.exists() {

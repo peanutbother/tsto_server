@@ -2,7 +2,9 @@ use crate::app::models::direction::Direction;
 use server::ServerOptions;
 use std::sync::Mutex;
 
+mod args;
 mod direction;
+mod env;
 mod server;
 
 lazy_static::lazy_static! {

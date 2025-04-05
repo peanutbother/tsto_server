@@ -1,4 +1,7 @@
-use crate::{config::OPTIONS, util::DIRECTORIES};
+use crate::{
+    config::OPTIONS,
+    util::{relative_path, DIRECTORIES},
+};
 use axum::Extension;
 use futures::{future::BoxFuture, stream::BoxStream};
 use once_cell::sync::OnceCell;
@@ -11,11 +14,16 @@ pub static DATABASE: OnceCell<Database> = OnceCell::new();
 pub async fn init() -> anyhow::Result<()> {
     let db = Database::new(&{
         let database = OPTIONS.take().database.clone();
+        let is_portable = OPTIONS.take().portable;
 
         if &database == ":memory:" {
             database
         } else {
-            let mut path = DIRECTORIES.data_dir().to_path_buf();
+            let mut path = if is_portable {
+                relative_path()?
+            } else {
+                DIRECTORIES.data_local_dir().to_path_buf()
+            };
             if !path.exists() {
                 create_dir_all(&path).expect("directory is writable");
             }

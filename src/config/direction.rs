@@ -1,7 +1,7 @@
 use super::OPTIONS;
 use crate::{
     app::models::direction::{Direction, DirectionToml, HashMapToVec, KVPair},
-    util::DIRECTORIES,
+    util::{relative_path, DIRECTORIES},
 };
 use std::{env, fs::create_dir_all};
 
@@ -15,7 +15,11 @@ impl Direction {
 }
 
 fn read_toml() -> anyhow::Result<DirectionToml> {
-    let mut path = DIRECTORIES.config_dir().to_path_buf();
+    let mut path = if OPTIONS.take().portable {
+        relative_path().map_err(anyhow::Error::from)?
+    } else {
+        DIRECTORIES.config_local_dir().to_path_buf()
+    };
     path.push("directions.toml");
 
     if !path.exists() {

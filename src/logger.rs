@@ -12,17 +12,23 @@ pub fn init() -> anyhow::Result<()> {
 
 #[cfg(feature = "server")]
 fn init_server() -> anyhow::Result<()> {
-    use crate::{config::OPTIONS, util::DIRECTORIES};
+    use crate::{
+        config::OPTIONS,
+        util::{relative_path, DIRECTORIES},
+    };
     use std::fs::{create_dir_all, OpenOptions};
     use tracing_subscriber::{filter, layer::SubscriberExt, util::SubscriberInitExt};
 
     let is_debug = cfg!(debug_assertions);
     let log_assets = OPTIONS.take().log_assets;
+    let is_portable = OPTIONS.take().portable;
     let crate_name = env!("CARGO_CRATE_NAME");
-    let log_path = DIRECTORIES
-        .data_dir()
-        .to_path_buf()
-        .join("server_log.jsonl");
+    let log_path = if is_portable {
+        relative_path()?
+    } else {
+        DIRECTORIES.data_local_dir().to_path_buf()
+    }
+    .join("server_log.jsonl");
     {
         let parent = log_path.parent().expect("path is valid ut-8");
         if !parent.exists() {
