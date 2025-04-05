@@ -12,7 +12,7 @@ pub struct Args {
     pub portable: bool,
     #[arg(long, short = 'p', help = "Set server port")]
     pub port: Option<u16>,
-    #[arg(long, short, help = "Set database path")]
+    #[arg(long, short = 'D', help = "Set database path")]
     pub database: Option<String>,
     #[arg(long, short, help = "Set dlc path to serve")]
     pub dlc_folder: Option<String>,
