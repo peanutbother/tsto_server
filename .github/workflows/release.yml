@@ -42,8 +42,8 @@ jobs:
             ~/.cargo/registry/cache/
             ~/.cargo/git/db/
             target/
-          key: cargo-${{ matrix.target }}-${{ hashFiles('**/Cargo.lock') }}
-          restore-keys: cargo-${{ matrix.target }}-
+          key: cargo-${{ matrix.target }}
+          restore-keys: cargo-${{ matrix.target }}
 
       - name: Set up Rust
         uses: dtolnay/rust-toolchain@stable
