@@ -53,7 +53,10 @@ impl Database {
             }
         }
 
+        info!("connecting to database at {}", path);
         let pool = sqlx::sqlite::SqlitePool::connect(path).await?;
+
+        info!("running migrations");
         sqlx::migrate!().run(&pool).await?;
 
         Ok(Self { pool })
