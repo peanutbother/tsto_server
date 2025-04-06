@@ -1,0 +1,104 @@
+name: Setup Environment
+description: Installs required tools to cross-compile dioxus apps
+inputs:
+  target:
+    description: rust target tripple
+    required: true
+  os:
+    description: the os this action runs on
+    required: true
+  cargo_bins:
+    description: the cargo-installable binaries required for later steps
+    required: true
+    default: wasm-bindgen-cli
+  token:
+    description: the github token used to fetch binaries for cargo-binstall
+    required: true
+    default: "${{ github.token }}"
+
+outputs:
+  random-number:
+    description: "Random number"
+    value: ${{ steps.random-number-generator.outputs.random-number }}
+runs:
+  using: "composite"
+  steps:
+    - name: Set up cargo cache
+      id: cache-cargo
+      uses: actions/cache/restore@v4
+      continue-on-error: false
+      with:
+        path: |
+          ~/.cargo/crates.toml
+          ~/.cargo/crates2.json
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+        key: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ inputs.cargo_bins }}
+        restore-keys: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ inputs.cargo_bins }}
+
+    - name: Set up Rust
+      uses: dtolnay/rust-toolchain@stable
+      with:
+        targets: wasm32-unknown-unknown,${{inputs.target}}
+
+    - name: Set up MinGW for Windows target
+      if: ${{contains(inputs.target, 'windows')}}
+      shell: bash
+      run: brew install mingw-w64
+
+    - name: Set up macOS-cross toolchain
+      if: ${{contains(inputs.target, 'linux')}}
+      shell: bash
+      run: |
+        brew tap messense/macos-cross-toolchains
+        brew install ${{inputs.target}}
+
+    - name: Set up cargo-binstall
+      if: steps.cache-cargo.outputs.cache-hit != 'true'
+      uses: cargo-bins/cargo-binstall@main
+      env:
+        GITHUB_TOKEN: ${{inputs.token}}
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 20
+        cache: "npm"
+
+    - name: Set up Node.js dependencies
+      shell: bash
+      run: npm ci
+
+    - name: Install cargo tools
+      if: steps.cache-cargo.outputs.cache-hit != 'true'
+      shell: bash
+      run: cargo binstall ${{inputs.cargo_bins}}
+      env:
+        GITHUB_TOKEN: ${{inputs.token}}
+
+    - name: Install Dioxus
+      if: steps.cache-cargo.outputs.cache-hit != 'true'
+      shell: bash
+      run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last
+
+    - name: Save cargo cache
+      if: steps.cache-cargo.outputs.cache-hit != 'true'
+      uses: actions/cache/save@v4
+      continue-on-error: false
+      with:
+        path: |
+          ~/.cargo/crates.toml
+          ~/.cargo/crates2.json
+          ~/.cargo/bin/
+          ~/.cargo/registry/index/
+          ~/.cargo/registry/cache/
+          ~/.cargo/git/db/
+        key: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ inputs.cargo_bins }}
+
+    - name: Export Environment
+      shell: bash
+      run: |
+        echo "CARGO_TARGET_AARCH64_UNKNOWN_LINUX_GNU_LINKER=aarch64-linux-gnu-gcc" >> $GITHUB_ENV
+        echo "CARGO_TARGET_X86_64_UNKNOWN_LINUX_GNU_LINKER=x86_64-linux-gnu-gcc" >> $GITHUB_ENV
