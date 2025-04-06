@@ -17,6 +17,7 @@ fn init_server() -> anyhow::Result<()> {
         util::{relative_path, DIRECTORIES},
     };
     use std::fs::{create_dir_all, OpenOptions};
+    use tracing::{info, Level};
     use tracing_subscriber::{filter, layer::SubscriberExt, util::SubscriberInitExt};
 
     let is_debug = cfg!(debug_assertions);
@@ -29,6 +30,7 @@ fn init_server() -> anyhow::Result<()> {
         DIRECTORIES.data_local_dir().to_path_buf()
     }
     .join("server_log.jsonl");
+
     {
         let parent = log_path.parent().expect("path is valid ut-8");
         if !parent.exists() {
@@ -38,17 +40,18 @@ fn init_server() -> anyhow::Result<()> {
 
     let filter = filter::filter_fn(move |metadata| {
         let target = metadata.target();
-
-        let asset_filter = format!("{}{}", crate_name, "::on_request_asset");
-        let tracking_filter = format!("{}{}", crate_name, "::on_tracking");
-        let metrics_filter = format!("{}{}", crate_name, "::on_metrics");
-        let event_filter = format!("{}{}", crate_name, "::on_event");
-        let telemetry_filter = format!("{}{}", crate_name, "::on_telemetry");
-        let stats_filter = format!("{}{}", crate_name, "::on_userstats");
+        let level = *metadata.level();
+        let asset_filter = format!("{crate_name}{}", "::on_request_asset");
+        let tracking_filter = format!("{crate_name}{}", "::on_tracking");
+        let metrics_filter = format!("{crate_name}{}", "::on_metrics");
+        let event_filter = format!("{crate_name}{}", "::on_event");
+        let telemetry_filter = format!("{crate_name}{}", "::on_telemetry");
+        let stats_filter = format!("{crate_name}{}", "::on_userstats");
 
         target.starts_with(crate_name)
+            && level <= if is_debug { Level::TRACE } else { Level::INFO }
             && (log_assets || !target.starts_with(&asset_filter))
-            && (cfg!(debug_assertions)
+            && (is_debug
                 || !target.starts_with(&tracking_filter)
                     && !target.starts_with(&metrics_filter)
                     && !target.starts_with(&event_filter)
@@ -89,11 +92,16 @@ fn init_server() -> anyhow::Result<()> {
                     OpenOptions::new()
                         .append(true)
                         .create(true)
-                        .open(log_path)
+                        .open(&log_path)
                         .expect("create(open,append) log file"),
                 ),
         )
         .init();
+
+    info!(
+        "writing server log to {}",
+        log_path.to_str().expect("log path is valid UTF-8")
+    );
 
     Ok(())
 }

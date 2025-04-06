@@ -21,13 +21,16 @@ fn main() -> anyhow::Result<()> {
 #[cfg(feature = "server")]
 #[tokio::main]
 pub async fn main() -> anyhow::Result<()> {
+    use tracing::info;
+
     tsto_server::logger::init()?;
     tsto_server::database::init().await?;
 
+    info!("initializing server");
     let router = tsto_server::app::create_router().await?;
     let listener = tsto_server::app::create_listener().await?;
 
-    tracing::info!("listening on {}", listener.local_addr().unwrap());
+    info!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, router).await?;
 
     Ok(())

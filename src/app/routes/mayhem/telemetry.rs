@@ -1,7 +1,7 @@
 use crate::{protos::com::ea::simpsons::client::telemetry::ClientTelemetryMessage, util::Protobuf};
 use axum::{extract::Query, http::HeaderMap, routing::post, Router};
 use std::collections::HashMap;
-use tracing::{debug, instrument};
+use tracing::{instrument, trace};
 
 // /mh/clienttelemetry
 pub fn create_router() -> Router {
@@ -15,7 +15,7 @@ async fn client_telemetry(
     Query(_query): Query<HashMap<String, String>>,
     Protobuf(telemetry): Protobuf<ClientTelemetryMessage>,
 ) -> Result<(), ()> {
-    debug!(target: concat!(env!("CARGO_PKG_NAME"),"::on_telemetry"), "{telemetry:?}");
+    trace!(target: concat!(env!("CARGO_PKG_NAME"),"::on_telemetry"), "{telemetry:?}");
 
     Ok(())
 }
