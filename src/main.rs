@@ -22,6 +22,7 @@ fn main() -> anyhow::Result<()> {
 #[tokio::main]
 pub async fn main() -> anyhow::Result<()> {
     use tracing::info;
+    use tsto_server::util::UPTIME;
 
     tsto_server::logger::init()?;
     tsto_server::database::init().await?;
@@ -29,6 +30,9 @@ pub async fn main() -> anyhow::Result<()> {
     info!("initializing server");
     let router = tsto_server::app::create_router().await?;
     let listener = tsto_server::app::create_listener().await?;
+
+    // access UPTIME to initialize it as it is behind a lazy_static
+    UPTIME.elapsed().ok();
 
     info!("listening on {}", listener.local_addr().unwrap());
     axum::serve(listener, router).await?;
