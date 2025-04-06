@@ -24,6 +24,43 @@ Play your town again like nothing happened.
 
 You can download the latest pre-built binaries from the [release](https://github.com/peanutbother/tsto_server/releases/latest) page.
 
+## 📖 Usage
+
+On first launch the server creates config and data directories depending on if portable mode is activated.
+This means that if you run `tsto_server --portable` it will create configs and data next to the executable.
+IF `--portable` is not set, the server will use the platform's default config and data path.
+
+### ENV Variables
+
+You can also override configuration with environment variables.
+As long as no cli arg is set, these variables will take precendence.
+So the hierarchy is cli args -> env variables -> configuration.
+
+The following ENV variables are supported:
+`DATABASE`, `DLC_FOLDER`, `LOG_ASSETS`*, `PORT`, `SERVER_ADDRESS`
+
+*`LOG_ASSETS` will be parsed as enabled if the value equals either to `true` (case ignored) or to `1`.
+
+### Non-Portable Config and Data Paths
+
+The server stores configuration and data in a platform-agnostic way using the crate [project-dirs]() if `--portable` is not set.
+
+### config dir
+
+| OS | Path |
+| --- | --- |
+|Linux | /home/`username`/.config/tsto_server |
+|Windows | C:\Users\\`username`\AppData\Local\peanutbother\tsto_server |
+|macOS | /Users/`username`/Library/Application Support/de.peanutbother.tsto_server |
+
+### data dir
+
+| OS | Path |
+| --- | --- |
+|Linux | /home/`username`/.local/share/tsto_server |
+|Windows | C:\Users\\`username`\AppData\Local\peanutbother\tsto_server\data |
+|macOS | /Users/`username`/Library/Application Support/de.peanutbother.tsto_server |
+
 ## 🛠️ Building the Project
 
 ### Prerequisites
