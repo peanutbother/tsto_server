@@ -39,7 +39,7 @@ impl ServerOptions {
     }
 
     pub fn dlc_folder(&self) -> PathBuf {
-        let mut path = if OPTIONS.take().portable {
+        let mut path = if self.portable {
             relative_path().expect("curent relative path retrieves successfully")
         } else {
             DIRECTORIES.data_local_dir().to_path_buf()
