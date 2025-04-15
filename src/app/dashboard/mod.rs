@@ -5,11 +5,13 @@ use dioxus_i18n::{
     unic_langid::{langid, LanguageIdentifier},
 };
 use dioxus_sdk::storage::use_persistent;
+use providers::use_user_provider;
 use router::Route;
 
 use crate::assets::LOCALES;
 
 mod components;
+mod providers;
 mod router;
 mod views;
 
@@ -40,6 +42,8 @@ pub fn App() -> Element {
     use_effect(move || {
         i18n.set_language(match_i18n_str(locale()));
     });
+
+    use_user_provider();
 
     rsx! {
         document::Link { rel: "icon", href: FAVICON }

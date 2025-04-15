@@ -1,3 +1,4 @@
+pub mod auth;
 pub mod dashboard;
 #[cfg(feature = "server")]
 pub mod direction;

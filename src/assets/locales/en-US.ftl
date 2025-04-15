@@ -40,3 +40,5 @@ logs_save = Save Logs
 route_credits = Credits
 route_home = Home
 route_logs = Logs
+route_login = Login
+route_logout = Logout

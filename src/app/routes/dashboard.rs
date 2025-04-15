@@ -1,25 +1,42 @@
 use crate::{
+    app::{
+        controllers::auth::{AuthController, Session},
+        models::auth::{Credentials, Role},
+    },
     config::OPTIONS,
     util::{relative_path, DIRECTORIES},
 };
 use axum::{
     extract::ws::{WebSocket, WebSocketUpgrade},
-    response::Response,
-    routing::get,
-    Router,
+    response::{IntoResponse, Redirect, Response},
+    routing::{get, post},
+    Form, Router,
 };
+use axum_login::permission_required;
 use futures::Stream;
+use reqwest::StatusCode;
 use std::{
     io::{BufRead, BufReader},
     time::Duration,
 };
-use tracing::error;
+use tracing::{error, instrument};
 
 // /dashboard
 pub fn create_router() -> Router {
-    Router::new().route("/logs", get(get_logs))
+    Router::new()
+        .route(
+            "/logs",
+            get(get_logs).layer(permission_required!(
+                AuthController,
+                login_url = "/login",
+                Role::Operator
+            )),
+        )
+        .route("/login", post(login))
+        .route("/logout", get(logout))
 }
-#[tracing::instrument]
+
+#[instrument]
 async fn get_logs(ws: WebSocketUpgrade) -> Response {
     ws.on_upgrade(handle_socket)
 }
@@ -64,4 +81,37 @@ fn get_logs_stream() -> Result<impl Stream<Item = String>, std::io::Error> {
     Ok(futures::stream::iter(
         reader.lines().map(|line| line.unwrap_or_default()),
     ))
+}
+
+#[instrument]
+async fn login(mut auth_session: Session, Form(creds): Form<Credentials>) -> Response {
+    let user = match auth_session.authenticate(creds.clone()).await {
+        Ok(Some(user)) => {
+            tracing::debug!("valid credentials");
+            user
+        }
+        Ok(None) => {
+            tracing::error!("Invalid credentials");
+
+            return Redirect::to("/login").into_response();
+        }
+        Err(_) => return StatusCode::INTERNAL_SERVER_ERROR.into_response(),
+    };
+
+    match auth_session.login(&user).await {
+        Ok(_) => {
+            tracing::debug!("login success");
+            Redirect::to("/").into_response()
+        }
+        Err(e) => {
+            tracing::debug!("login error {e}");
+            StatusCode::INTERNAL_SERVER_ERROR.into_response()
+        }
+    }
+}
+
+#[instrument]
+async fn logout(mut auth_session: Session) -> Response {
+    auth_session.logout().await.ok();
+    Redirect::to("/login").into_response()
 }

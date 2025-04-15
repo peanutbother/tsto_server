@@ -5,8 +5,10 @@ use crate::{
 use axum::Extension;
 use futures::{future::BoxFuture, stream::BoxStream};
 use once_cell::sync::OnceCell;
+use rand::{distr::Alphanumeric, Rng};
 use sqlx::{migrate::MigrateDatabase, Pool, Sqlite};
 use std::fs::create_dir_all;
+use tower_sessions_sqlx_store::SqliteStore;
 use tracing::{error, info};
 
 pub static DATABASE: OnceCell<Database> = OnceCell::new();
@@ -41,6 +43,7 @@ pub async fn init() -> anyhow::Result<()> {
 #[derive(Debug, Clone)]
 pub struct Database {
     pool: Pool<Sqlite>,
+    session_store: SqliteStore,
 }
 
 impl Database {
@@ -55,11 +58,26 @@ impl Database {
 
         info!("connecting to database at {}", path);
         let pool = sqlx::sqlite::SqlitePool::connect(path).await?;
+        let session_store = SqliteStore::new(pool.clone())
+            .with_table_name("sessions")
+            .map_err(|e| anyhow::anyhow!(e))?;
 
         info!("running migrations");
         sqlx::migrate!().run(&pool).await?;
+        session_store.migrate().await?;
 
-        Ok(Self { pool })
+        if !check_auth_has_owner(&pool).await? {
+            let password = generate_admin_owner(&pool).await?;
+            info!(
+                r#"generated initial user "admin" with password: "{}""#,
+                password
+            );
+        }
+
+        Ok(Self {
+            pool,
+            session_store,
+        })
     }
 
     pub async fn extension() -> anyhow::Result<Extension<Self>> {
@@ -69,6 +87,14 @@ impl Database {
                 .ok_or(anyhow::anyhow!("use of db before initialization"))?
                 .clone(),
         ))
+    }
+
+    pub fn session_store() -> anyhow::Result<SqliteStore> {
+        Ok(DATABASE
+            .get()
+            .ok_or(anyhow::anyhow!("use of db before initialization"))?
+            .clone()
+            .session_store)
     }
 }
 
@@ -126,4 +152,32 @@ impl<'c> sqlx::Executor<'c> for &Database {
     {
         self.pool.describe(sql)
     }
+}
+
+async fn check_auth_has_owner(pool: &Pool<Sqlite>) -> Result<bool, sqlx::Error> {
+    const QUERY_OWNER: &str = r#"SELECT COUNT() FROM auth WHERE role = "owner""#;
+    Ok(sqlx::query_scalar::<_, i32>(QUERY_OWNER)
+        .fetch_one(pool)
+        .await?
+        > 0)
+}
+
+async fn generate_admin_owner(pool: &Pool<Sqlite>) -> Result<String, sqlx::Error> {
+    const CREATE_OWNER: &str = r#"INSERT INTO auth 
+    (username, password, role)
+    VALUES("admin", ?, "owner")"#;
+
+    let rng = rand::rng();
+    let password: String = rng
+        .sample_iter(Alphanumeric)
+        .take(8)
+        .map(|i| i as char)
+        .collect();
+
+    sqlx::query(CREATE_OWNER)
+        .bind(password_auth::generate_hash(password.clone()))
+        .execute(pool)
+        .await?;
+
+    Ok(password)
 }

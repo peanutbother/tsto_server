@@ -1,10 +1,12 @@
 use super::{
+    auth::{AuthController, AuthControllerError},
     events::{EventController, EventControllerError},
     mayhem::{MayhemController, MayhemControllerError},
     user::{UserController, UserControllerError},
 };
 use crate::{
     app::models::{
+        auth::{Role, UserId},
         dashboard::{
             CreditsResponse, EventsResponse, ServerConfigResponse, Status, StatusResponse,
         },
@@ -18,6 +20,8 @@ use tracing::instrument;
 #[derive(Debug, thiserror::Error)]
 pub enum DashboardControllerError {
     #[error(transparent)]
+    AuthController(#[from] AuthControllerError),
+    #[error(transparent)]
     EventController(#[from] EventControllerError),
     #[error(transparent)]
     UserController(#[from] UserControllerError),
@@ -29,6 +33,7 @@ pub enum DashboardControllerError {
 
 #[derive(Debug, Default, Clone)]
 pub struct DashboardController {
+    auth: AuthController,
     events: EventController,
     users: UserController,
 }
@@ -162,5 +167,33 @@ impl DashboardController {
     #[instrument]
     pub fn get_lobby_time() -> Result<u128, DashboardControllerError> {
         Ok(MayhemController::get_lobby_time()?)
+    }
+
+    #[instrument]
+    pub async fn set_password(
+        &self,
+        id: UserId,
+        password: String,
+    ) -> Result<bool, DashboardControllerError> {
+        Ok(self.auth.set_password(id, password).await?)
+    }
+
+    #[instrument]
+    pub async fn set_username(
+        &self,
+        id: UserId,
+        username: String,
+    ) -> Result<bool, DashboardControllerError> {
+        Ok(self.auth.set_username(id, username).await?)
+    }
+
+    #[instrument]
+    pub async fn set_role(&self, id: UserId, role: Role) -> Result<bool, DashboardControllerError> {
+        Ok(self.auth.set_role(id, role).await?)
+    }
+
+    #[instrument]
+    pub async fn delete_user(&self, id: UserId) -> Result<bool, DashboardControllerError> {
+        Ok(self.auth.delete_user(id).await?)
     }
 }

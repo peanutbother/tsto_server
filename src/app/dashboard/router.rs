@@ -9,6 +9,8 @@ pub enum Route {
     Home {},
     #[route("/credits")]
     Credits {},
+    #[route("/login")]
+    Login {},
     #[route("/logs")]
     Logs {},
     #[route("/:..segments")]
