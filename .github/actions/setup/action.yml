@@ -23,6 +23,10 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - name: Create cargo cache key
+      id: cache-key
+      shell: bash
+      run: echo "key=$(echo ${{ inputs.cargo_bins }} | tr '[:blank:]' '__')"" >> "$GITHUB_OUTPUT"
     - name: Set up cargo cache
       id: cache-cargo
       uses: actions/cache/restore@v4
@@ -35,8 +39,8 @@ runs:
           ~/.cargo/registry/index/
           ~/.cargo/registry/cache/
           ~/.cargo/git/db/
-        key: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ inputs.cargo_bins }}
-        restore-keys: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ inputs.cargo_bins }}
+        key: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ steps.cache-key.outputs.key }}
+        restore-keys: cargo-${{ inputs.target }}-${{ inputs.os }}-${{ steps.cache-key.outputs.key }}
 
     - name: Set up Rust
       uses: dtolnay/rust-toolchain@stable
@@ -74,14 +78,14 @@ runs:
     - name: Install cargo tools
       if: steps.cache-cargo.outputs.cache-hit != 'true'
       shell: bash
-      run: cargo binstall ${{inputs.cargo_bins}}
+      run: cargo binstall ${{inputs.cargo_bins}} --force
       env:
         GITHUB_TOKEN: ${{inputs.token}}
 
     - name: Install Dioxus
       if: steps.cache-cargo.outputs.cache-hit != 'true'
       shell: bash
-      run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last
+      run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last --force
 
     - name: Save cargo cache
       if: steps.cache-cargo.outputs.cache-hit != 'true'
