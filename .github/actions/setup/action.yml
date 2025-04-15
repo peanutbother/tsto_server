@@ -26,7 +26,7 @@ runs:
     - name: Create cargo cache key
       id: cache-key
       shell: bash
-      run: echo "key=$(echo ${{ inputs.cargo_bins }} | tr '[:blank:]' '__')"" >> "$GITHUB_OUTPUT"
+      run: echo "key=$(echo ${{ inputs.cargo_bins }} | tr '[:blank:]' '__')" >> "$GITHUB_OUTPUT"
     - name: Set up cargo cache
       id: cache-cargo
       uses: actions/cache/restore@v4
