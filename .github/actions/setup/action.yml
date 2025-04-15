@@ -74,14 +74,14 @@ runs:
     - name: Install cargo tools
       if: steps.cache-cargo.outputs.cache-hit != 'true'
       shell: bash
-      run: cargo binstall ${{inputs.cargo_bins}}
+      run: cargo binstall ${{inputs.cargo_bins}} --force
       env:
         GITHUB_TOKEN: ${{inputs.token}}
 
     - name: Install Dioxus
       if: steps.cache-cargo.outputs.cache-hit != 'true'
       shell: bash
-      run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last
+      run: cargo install dioxus-cli --git https://github.com/DioxusLabs/dioxus --tag v0.6-last --force
 
     - name: Save cargo cache
       if: steps.cache-cargo.outputs.cache-hit != 'true'
