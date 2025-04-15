@@ -1,17 +1,14 @@
+use crate::app::models::{
+    auth::{Role, User},
+    dashboard::*,
+};
 #[cfg(feature = "server")]
 use crate::{
     app::controllers::{
         auth::{AuthControllerError, Session},
         dashboard::DashboardController,
     },
-    extract,
-};
-use crate::{
-    app::models::{
-        auth::{Role, User},
-        dashboard::*,
-    },
-    require_auth,
+    extract, require_auth,
 };
 use dioxus::prelude::*;
 
