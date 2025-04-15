@@ -55,3 +55,41 @@ macro_rules! load_gate {
         }
     };
 }
+
+#[macro_export]
+macro_rules! require_auth {
+    ($session:ident => $body:block) => {
+        $crate::extract!($session: Session);
+
+        if $session.user.is_some() {
+            return $body
+        } else {
+            return Err(AuthControllerError::Unauthorized.into());
+        }
+    };
+    ($perm:expr, $session:ident => $body:block) => {
+        $crate::extract!($session: Session);
+
+        if $session.user.is_some() {
+            $crate::require_perm!($session, $perm);
+            return $body
+        } else {
+            return Err(AuthControllerError::Unauthorized.into());
+        }
+    };
+}
+
+#[macro_export]
+macro_rules! require_perm {
+    ($session:ident, $perm:expr) => {
+        if !axum_login::AuthzBackend::has_perm(
+            &$session.backend,
+            $session.user.as_ref().unwrap(),
+            $perm,
+        )
+        .await?
+        {
+            return Err(AuthControllerError::MissingPermissions.into());
+        }
+    };
+}

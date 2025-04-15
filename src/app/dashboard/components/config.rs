@@ -80,6 +80,28 @@ pub fn ConfigSection() -> Element {
         current_config.set(Some(new_config));
     });
 
+    if let Some(Err(ServerFnError::ServerError(e))) = config() {
+        return rsx!(
+            div { class: "p-6 overflow-scroll",
+                h2 { class: "text-lg font-semibold", {t!("config_header")} }
+                div {
+                    p { "{e}" }
+                }
+            }
+        );
+    }
+
+    if let Some(Err(ServerFnError::ServerError(e))) = events() {
+        return rsx!(
+            div { class: "p-6 overflow-scroll",
+                h2 { class: "text-lg font-semibold", {t!("config_header")} }
+                div {
+                    p { "{e}" }
+                }
+            }
+        );
+    }
+
     rsx! {
         div { class: "p-6 overflow-scroll",
             h2 { class: "text-lg font-semibold", {t!("config_header")} }

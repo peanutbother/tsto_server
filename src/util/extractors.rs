@@ -10,11 +10,13 @@ use std::collections::HashMap;
 
 #[macro_export]
 macro_rules! extract {
-    ($value:ident : $value_type:ty) => {
+    ($value:ident : $value_type:ty $(, $($tt:tt)+)?) => {
         let axum::Extension::<$value_type>($value) = dioxus::prelude::extract().await?;
+        $($crate::extract!($($tt)+))?
     };
-    ($($value:ident : $value_type:ty),+ $(,)?) => {
-        $($crate::extract!($value : $value_type);)+
+    (mut $value:ident : $value_type:ty $(, $($tt:tt)+)?) => {
+        let axum::Extension::<$value_type>(mut $value) = dioxus::prelude::extract().await?;
+        $($crate::extract!($($tt)+))?
     };
 }
 

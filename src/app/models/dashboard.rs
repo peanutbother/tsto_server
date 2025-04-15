@@ -1,3 +1,4 @@
+pub use super::auth::{Credentials, UserId};
 #[derive(Debug, Clone, serde::Deserialize, serde::Serialize, PartialEq)]
 pub struct CreditsResponse {
     pub credits: Vec<Credit>,

@@ -1,4 +1,7 @@
-use crate::app::models::dashboard::ServerLog;
+use crate::app::{
+    dashboard::providers::use_permissions,
+    models::{auth::Role, dashboard::ServerLog},
+};
 use dioxus::prelude::*;
 use dioxus_i18n::t;
 use futures::StreamExt;
@@ -79,6 +82,14 @@ pub fn Logs() -> Element {
 
         debug!("Disconnected from websocket");
     });
+
+    if !use_permissions(Role::Operator) {
+        return rsx! {
+            div { class: "body-container-h min-w-11/12 max-w-11/12 min-h-96 max-h-96 pt-4 mb-8",
+                p { class: "text-center", "Missing permission for this page" }
+            }
+        };
+    }
 
     rsx! {
         div { class: "body-container-h min-w-11/12 max-w-11/12 min-h-96 max-h-96 pt-4 mb-8",
