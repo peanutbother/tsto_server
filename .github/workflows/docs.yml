@@ -2,8 +2,8 @@ name: Build and Publish Documentation
 
 on:
   push:
-    branches:
-      - "main"
+    tags:
+      - "v*.*.*" # Runs when a version tag (e.g., v1.0.0) is pushed
   workflow_dispatch: # Allows manual trigger from GitHub UI
 
 defaults:
